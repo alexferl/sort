@@ -2,6 +2,8 @@
 
 A port of Go's [sort](https://pkg.go.dev/sort@go1.20.5) package to [V](https://vlang.io/).
 
+**Requires** V [c9e8dd5](https://github.com/vlang/v/commit/c9e8dd56c2e5192fe030ca8534733887604a0999) or higher.
+
 ## Installing
 ```shell
 v install alexferl.sort
