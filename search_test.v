@@ -61,7 +61,7 @@ const search_tests = [
 ]
 
 fn test_search() {
-	for t in .search_tests {
+	for t in search_tests {
 		i := search(t.n, t.f)
 		assert i == t.i, '${t.name}: expected index ${t.i}; got ${i}'
 	}
@@ -186,18 +186,18 @@ const search_wrapper_tests = [
 ]
 
 fn test_search_wrappers() {
-	for t in .search_wrapper_tests {
+	for t in search_wrapper_tests {
 		assert t.result == t.i, '${t.name}: expected index ${t.i}; got ${t.result}'
 	}
 }
 
 fn run_search_wrappers() {
-	search_ints(.data, 11)
-	search_f64s(.fdata, 2.1)
-	search_strings(.sdata, '')
-	IntSlice{.data}.search(0)
-	F64Slice{.fdata}.search(2.0)
-	StringSlice{.sdata}.search('x')
+	search_ints(data, 11)
+	search_f64s(fdata, 2.1)
+	search_strings(sdata, '')
+	IntSlice{data}.search(0)
+	F64Slice{fdata}.search(2.0)
+	StringSlice{sdata}.search('x')
 }
 
 fn test_benchmark_search_wrappers() {
