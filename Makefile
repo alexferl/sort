@@ -11,11 +11,13 @@ help:
 	@echo "make pre-commit"
 	@echo "	run pre-commit"
 
-dev:
-	@echo
+check-pre-commit:
 ifeq (, $(shell which pre-commit))
 	$(error "No pre-commit in $(PATH), pre-commit (https://pre-commit.com) is required")
 endif
+
+dev: check-pre-commit
+	pre-commit install
 
 test:
 	v -stats test .
@@ -23,5 +25,5 @@ test:
 fmt:
 	v fmt -w .
 
-pre-commit:
+pre-commit: check-pre-commit
 	pre-commit
