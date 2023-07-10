@@ -9,13 +9,15 @@ v install alexferl.sort
 
 # Using
 ```v
+module main
+
 import alexferl.sort
 
 fn main() {
-    data := [3, 2, 4, 1, 0, 5]
-    clone := data.clone()
-	mut a := IntSlice{clone}
-	sort(mut a)
-	assert is_sorted(a), 'sorted ${data} got ${clone}'
+	data := [3, 2, 4, 1, 0, 5]
+	clone := data.clone()
+	mut a := sort.IntSlice{clone}
+	sort.sort(mut a)
+	assert sort.is_sorted(a), 'sorted ${data} got ${clone}'
 }
 ```
