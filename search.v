@@ -38,18 +38,18 @@ module sort
 // As a more whimsical example, this program guesses your number:
 //
 //  fn guessing_game() {
-// 	    println("Pick an integer from 0 to 100.")
-// 	    answer := search(100, fn(i int) bool {
-// 		    mut r := readline.Readline{}
-// 		    r.enable_raw_mode()
-// 		    defer {
-// 			    r.disable_raw_mode()
-// 		    }
-// 		    s := r.read_line("Is your number <= ${i}? ")!
-// 		    return s != "" && s[0] == 'y'
-// 	    })
-// 	    println("Your number is ${answer}.")
-// }
+//      println("Pick an integer from 0 to 100.")
+//      answer := search(100, fn(i int) bool {
+// 	        mut r := readline.Readline{}
+// 	        r.enable_raw_mode()
+// 	        defer {
+// 		        r.disable_raw_mode()
+// 	        }
+// 	        s := r.read_line("Is your number <= ${i}? ") or { panic(err) }
+// 	        return s != "" && s.starts_with('y')
+//      })
+//      println("Your number is ${answer}.")
+//  }
 pub fn search(n int, f fn (int) bool) int {
 	// Define f(-1) == false and f(n) == true.
 	// Invariant: f(i-1) == false, f(j) == true.
