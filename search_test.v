@@ -180,9 +180,9 @@ const search_wrapper_tests = [
 	SearchWrapperTest{'search_ints', search_ints(data, 11), 8},
 	SearchWrapperTest{'search_f64s', search_f64s(fdata, 2.1), 4},
 	SearchWrapperTest{'search_strings', search_strings(sdata, ''), 0},
-	SearchWrapperTest{'IntSlice.search', IntSlice{data}.search(0), 2},
-	SearchWrapperTest{'F64Slice.search', F64Slice{fdata}.search(2.0), 3},
-	SearchWrapperTest{'StringSlice.search', StringSlice{sdata}.search('x'), 3},
+	SearchWrapperTest{'IntSlice.search', IntSlice(data).search(0), 2},
+	SearchWrapperTest{'F64Slice.search', F64Slice(fdata).search(2.0), 3},
+	SearchWrapperTest{'StringSlice.search', StringSlice(sdata).search('x'), 3},
 ]
 
 fn test_search_wrappers() {
@@ -195,9 +195,9 @@ fn run_search_wrappers() {
 	search_ints(data, 11)
 	search_f64s(fdata, 2.1)
 	search_strings(sdata, '')
-	IntSlice{data}.search(0)
-	F64Slice{fdata}.search(2.0)
-	StringSlice{sdata}.search('x')
+	IntSlice(data).search(0)
+	F64Slice(fdata).search(2.0)
+	StringSlice(sdata).search('x')
 }
 
 fn test_benchmark_search_wrappers() {

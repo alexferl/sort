@@ -19,7 +19,7 @@ import alexferl.sort
 fn main() {
 	data := [3, 2, 4, 1, 0, 5]
 	clone := data.clone()
-	mut a := sort.IntSlice{clone}
+	mut a := sort.IntSlice(clone)
 	sort.sort(mut a)
 	assert sort.is_sorted(a), 'sorted ${data} got ${clone}'
 }

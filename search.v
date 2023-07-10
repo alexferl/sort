@@ -141,15 +141,15 @@ pub fn search_strings(a []string, x string) int {
 
 // search returns the result of applying search_ints to the receiver and x.
 pub fn (p IntSlice) search(x int) int {
-	return search_ints(p.data, x)
+	return search_ints(p, x)
 }
 
 // search returns the result of applying search_f64s to the receiver and x.
 pub fn (p F64Slice) search(x f64) int {
-	return search_f64s(p.data, x)
+	return search_f64s(p, x)
 }
 
 // search returns the result of applying search_strings to the receiver and x.
 pub fn (p StringSlice) search(x string) int {
-	return search_strings(p.data, x)
+	return search_strings(p, x)
 }

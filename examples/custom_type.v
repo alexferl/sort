@@ -7,38 +7,32 @@ struct Mobile {
 	price int
 }
 
-struct ByPrice {
-	mut:
-	data []Mobile
-}
+type ByPrice = []Mobile
 
 fn (a ByPrice) len() int {
-	return a.data.len
+	return a.len
 }
 
 fn (mut a ByPrice) swap(i int, j int) {
-	a.data[i], a.data[j] = a.data[j], a.data[i]
+	a[i], a[j] = a[j], a[i]
 }
 
 fn (a ByPrice) less(i int, j int) bool {
-	return a.data[i].price < a.data[j].price
+	return a[i].price < a[j].price
 }
 
-struct ByBrand {
-	mut:
-	data []Mobile
-}
+type ByBrand = []Mobile
 
 fn (a ByBrand) len() int {
-	return a.data.len
+	return a.len
 }
 
 fn (mut a ByBrand) swap(i int, j int) {
-	a.data[i], a.data[j] = a.data[j], a.data[i]
+	a[i], a[j] = a[j], a[i]
 }
 
 fn (a ByBrand) less(i int, j int) bool {
-	return a.data[i].brand > a.data[j].brand
+	return a[i].brand > a[j].brand
 }
 
 fn main() {
@@ -48,7 +42,7 @@ fn main() {
 	mobiles << Mobile{'Apple', 1219}
 	mobiles << Mobile{'Samsung', 1045}
 
-	mut a := ByPrice{mobiles}
+	mut a := ByPrice(mobiles)
 
 	println('Before sort:')
 	for m in mobiles {
@@ -64,7 +58,7 @@ fn main() {
 	}
 	println('')
 
-	mut b := ByBrand{mobiles}
+	mut b := ByBrand(mobiles)
 	sort.sort(mut b)
 
 	println('sort by brand (descending):')
@@ -91,4 +85,4 @@ Sony 952
 Samsung 1045
 Nokia 468
 Apple 1219
- */
+*/
