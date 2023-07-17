@@ -1,0 +1,41 @@
+module main
+
+import os
+
+struct Variant {
+	// name is the variant name: should be unique among variants.
+	name string
+	// Path is the file path into which the generator will emit the code for this
+	// variant.
+	path string
+	// @module is the @module this code will be emitted into.
+	@module string
+	// fn_suffix is appended to all function names in this variant's code. All
+	// suffixes should be unique within a @module.
+	fn_suffix string
+	// data_type is the type of the data parameter of functions in this variant's
+	// code.
+	data_type string
+}
+
+fn main() {
+	generate(Variant{
+		name: 'interface'
+		path: 'zsortinterface.v'
+		@module: 'sort'
+		data_type: 'Interface'
+	})
+	generate(Variant{
+		name: 'func'
+		path: 'zsortfunction.v'
+		@module: 'sort'
+		fn_suffix: '_fn'
+		data_type: 'LessSwap'
+	})
+}
+
+fn generate(v Variant) {
+	variant := v
+	text := $tmpl('sort.tmpl')
+	os.write_file(os.resource_abs_path(v.path), text) or { panic(err) }
+}
