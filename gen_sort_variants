@@ -1,3 +1,5 @@
+// remove the .v extension as the 'module main' part breaks when installing from vpm
+
 module main
 
 import os
